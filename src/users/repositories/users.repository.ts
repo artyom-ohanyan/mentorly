@@ -9,6 +9,7 @@ import { Prisma } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { SignupDto } from '../../auth/dto/signup.dto';
+import { SearchUserDto } from '../dto/search-user.dto';
 
 @Injectable()
 export class UsersRepository {
@@ -27,8 +28,15 @@ export class UsersRepository {
       }
     }
   }
-  async findAll() {
-    return await this.prisma.users.findMany({ where: { published: true } });
+  async findAll(searchUserDto: SearchUserDto) {
+    return await this.prisma.users.findMany({
+      where: {
+        name: searchUserDto.name,
+        surname: searchUserDto.surname,
+        type: searchUserDto.type,
+        createdAt: searchUserDto.createdAt,
+      },
+    });
   }
   async findOne(id: number) {
     return await this.prisma.users.findUnique({

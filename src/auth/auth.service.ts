@@ -31,7 +31,7 @@ export class AuthService {
     try {
       const user = await this.usersService.create(signupDto);
 
-      return this.generateTokens({
+      return await this.generateTokens({
         userId: user.id,
       });
     } catch (e) {

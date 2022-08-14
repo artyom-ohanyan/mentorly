@@ -28,7 +28,7 @@ async function bootstrap() {
           scheme: 'bearer',
           bearerFormat: 'JWT',
         },
-        'defaultBearerAuth',
+        'bearerAuth',
       )
       .build();
 

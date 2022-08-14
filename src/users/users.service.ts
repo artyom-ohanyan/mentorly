@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './repositories/users.repository';
 import { SignupDto } from '../auth/dto/signup.dto';
+import { SearchUserDto } from './dto/search-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -14,8 +15,8 @@ export class UsersService {
     }
   }
 
-  findAll() {
-    return this.repository.findAll();
+  findAll(searchUserDto: SearchUserDto) {
+    return this.repository.findAll(searchUserDto);
   }
 
   findOne(id: number) {

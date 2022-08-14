@@ -23,7 +23,7 @@ export class AuthController {
         refreshToken,
       };
     } catch (e) {
-      return e;
+      return { error: e.message };
     }
   }
   @Post('login')
