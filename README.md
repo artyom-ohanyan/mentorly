@@ -2,7 +2,7 @@ replace .env.example to .env pay attention on .env comments
 
 if already installed docker and docker-compose 
 
-docker-compose up -d
+docker-compose up --build
 
 docker-compose exec mentorly npx prisma migrate deploy
 
