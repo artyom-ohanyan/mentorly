@@ -8,6 +8,7 @@ import {
   NestConfig,
   SwaggerConfig,
 } from './common/config/config.interface';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,7 @@ async function bootstrap() {
   const nestConfig = configService.get<NestConfig>('nest');
   const corsConfig = configService.get<CorsConfig>('cors');
   const swaggerConfig = configService.get<SwaggerConfig>('swagger');
+  app.useGlobalPipes(new ValidationPipe());
   if (swaggerConfig.enabled) {
     const config = new DocumentBuilder()
       .setTitle('Mentorly')
