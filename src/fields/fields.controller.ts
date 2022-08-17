@@ -3,9 +3,9 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  Put,
 } from '@nestjs/common';
 import { FieldsService } from './fields.service';
 import { CreateFieldDto } from './dto/create-field.dto';
@@ -36,7 +36,7 @@ export class FieldsController {
     return this.fieldsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   @ApiOkResponse({ type: FieldEntity })
   update(@Param('id') id: string, @Body() updateFieldDto: UpdateFieldDto) {
     return this.fieldsService.update(+id, updateFieldDto);

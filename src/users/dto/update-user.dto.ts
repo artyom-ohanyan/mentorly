@@ -1,47 +1,54 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UpdateUserDto {
-  @IsNotEmpty()
   @IsString()
+  @IsOptional()
   @ApiProperty()
   name: string;
 
-  @IsNotEmpty()
   @IsString()
+  @IsOptional()
   @ApiProperty()
   surname: string;
 
-  @IsNotEmpty()
   @IsString()
+  @IsOptional()
   @ApiProperty()
   type: string;
 
   @IsString()
+  @IsOptional()
   @ApiProperty()
   position: string;
 
   @IsNumber()
+  @IsOptional()
   @ApiProperty()
   field: number;
 
   @IsString()
+  @IsOptional()
   @ApiProperty()
   description: string;
 
   @IsString()
+  @IsOptional()
   @ApiProperty()
   education: string;
 
   @IsString()
+  @IsOptional()
   @ApiProperty()
   experience: string;
 
   @IsString()
+  @IsOptional()
   @ApiProperty()
   about: string;
 
   @IsBoolean()
+  @IsOptional()
   @ApiProperty({ required: false, default: false })
   published?: boolean = false;
 }

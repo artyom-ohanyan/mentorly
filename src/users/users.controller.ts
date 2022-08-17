@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Body,
-  Patch,
-  Param,
-  Query,
-  Post,
-} from '@nestjs/common';
+import { Controller, Get, Body, Param, Query, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
@@ -40,7 +32,7 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   @UseGuards(JwtAuthGuard)
   @ApiOkResponse({ type: UserEntity })
   update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
